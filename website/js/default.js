@@ -7,6 +7,7 @@ $(document).ready(function(){
 	});
 $( "#preview" ).click(function() {
 	var value = editor.getValue();
+	stage.removeAllChildren();
 	eval(value);
 	stage.update();
 });

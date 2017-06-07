@@ -20,19 +20,14 @@
 
 <body onload="init();">
 <h1>Koodikangas</h1>
-  <canvas id="codeCanvas"></canvas>
+  <canvas id="codeCanvas" width="800" height="600"></canvas>
   <div id="texteditor">
   <textarea class="codemirror-textarea">
 Hei! Tervetuloa käyttämään koodikangasta!
 Tähän voit kirjoittaa koodia, painamalla "Suorita" nappia, koodin tulos ilmestyy koodikankaalle.
 Esimerkiksi 
   
-var circle = new createjs.Shape();
-circle.graphics.beginFill("DeepSkyBlue").drawCircle(0, 0, 50);
-circle.x = 100;
-circle.y = 100;
-stage.addChild(circle);
-
+shape.circle("blue")
 luo sinisen ympyrän!
 
   </textarea>
