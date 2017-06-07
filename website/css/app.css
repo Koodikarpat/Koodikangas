@@ -5,11 +5,12 @@ html {
 body {
 	vertical-align: middle;
 	min-height: 100%;
+	margin: 0px;
 }
 
-.codeCanvas {
-	min-height: 10a0%;
-	min-width: 100%;
+#codeCanvas {
+	height: 800px;
+	width: 800px;
 }
 
 h1 {
