@@ -82,14 +82,14 @@ var shape = {
 		stage.addChild(salmiakki);
 		return salmiakki;
 	},
-	palikka: function(color) {   //ei saatu toimimaan vielä!
+	palikka: function(color) {
 		var palikka = new createjs.Shape();
 		palikka.graphics.beginFill (color || "red");
 		palikka.graphics.moveTo(20, 20);
 		palikka.graphics.lineTo(100, 20);
 		palikka.graphics.arcTo(150, 20, 150, 70, 50);
 		palikka.graphics.lineTo(150, 120);
-		palikka.graphics.stroke();
+		palikka.graphics.closePath();
 		palikka.x = 200;
 		palikka.y = 200;
 		stage.addChild(palikka);
