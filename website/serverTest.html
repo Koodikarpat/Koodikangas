@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<header style="text-align:center;"><h1 style="background-color:silver; position:center; font-size: 48px; border-style:solid; border-color:red; padding:60px 0px 0px 0px;">
+		<font style="color:blue;">Welcome!</font></header>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	</head>
+	<body>
+					<form action="/nakki">
+  First name:<br>
+  <input type="text" name="firstname" value="Mickey">
+  <br>
+  Last name:<br>
+  <input type="text" name="lastname" value="Mouse">
+  <br><br>
+  <input type="submit" value="Submit">
+</form> 
+		
+	
+		<script>
+		console.log("DING");
+		$(document).ready(function(){
+		console.log("GAN");
+				$.ajax({
+		  method: "GET",
+		  url: "/lasla",
+		  data: { name: "John", location: "Boston" }
+		})
+		  .done(function( msg ) {
+			alert( "Data Saved: " + msg );
+		  });
+		});
+		</script>
+	</body>
+
+</html>
