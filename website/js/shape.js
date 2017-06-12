@@ -2,6 +2,7 @@
 var shape = {
 	circle: function(color) {
 		var circle = new createjs.Shape();
+		circle.move= move
 		circle.graphics.beginFill(color || "red").drawCircle(0, 0, 50);
 		circle.x = Math.random() * 500;
 		circle.y = Math.random() * 500;
@@ -125,5 +126,22 @@ var shape = {
 		text.textBaseline = "alphabetic";
 		stage.addChild(text);
 		return text;
+	},
+	
+
+}
+
+var move = function() {
+	var direction;
+	var coordinates = [];
+	
+	for (var i = 0; i < arguments.length; i++){
+		if (typeof arguments[i] == "string"){
+			direction = arguments[i];
+		} else { 
+			coordinates.push(arguments[i])
+		}
+	this.x +=100
+	this.y +=200
 	}
 }

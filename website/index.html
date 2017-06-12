@@ -4,6 +4,7 @@
 <title>Koodikangas</title>
 <!-- Perusrunko -->
 <link rel="stylesheet" type="text/css" href="css/app.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
 <script type="text/javascript" src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
@@ -16,26 +17,23 @@
 <script type="text/javascript" src="js/codemirror-5.26.0/mode/javascript/javascript.js"></script>
 <script type="text/javascript" src="js/default.js"></script>
 <script type="text/javascript" src="js/networker.js"></script>
-<script>
-</script>
+<script type="text/javascript" src="js/codemirror-5.26.0/addon/display/placeholder.js"></script>
 
 <meta charset="UTF-8">
 </head>
 
 <body onload="init();">
-<h2 style="text-align:center; margin:5px 5px 5px 5px; border: 1px solid black;">Koodikangas</h2>
+<h2 style="text-align:center; font-size: 48px; font-family: Orbitron;"><p style="color:#00acdc;">Koodikangas</p></h2>
   <canvas id="codeCanvas" width="800" height="600"></canvas>
   <div id="texteditor">
-  <textarea id="text-area" class="codemirror-textarea">   <!-- saako ohjeet jotenkin pois kun tekstilaatikkoa klikkaa -->
-Hei! Tervetuloa käyttämään koodikangasta!
-Tähän voit kirjoittaa koodia, painamalla "Suorita" nappia, koodin tulos ilmestyy koodikankaalle.
+  <textarea id="text-area" class="codemirror-textarea" placeholder="Hei! 
+Tervetuloa käyttämään koodikangasta! 
+Tähän voit kirjoittaa koodia, painamalla &quot;Suorita&quot; nappia, koodin tulos ilmestyy koodikankaalle.
 Esimerkiksi:
   
-shape.circle("blue")
+shape.circle(&quot;blue&quot;)
 
-luo sinisen ympyrän!
-
-</textarea>
+luo sinisen ympyrän!"></textarea>
   <button id="preview">Suorita</button>
   <button id="save">Tallenna</button>
   </div>
