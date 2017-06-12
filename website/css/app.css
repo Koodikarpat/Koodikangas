@@ -21,3 +21,5 @@ h1 {
 	border: 1px solid black;
 	vertical-align: bottom;
 }
+
+@font-face { font-family: Orbitron; src: url('https://fonts.google.com/specimen/Orbitron'); }
