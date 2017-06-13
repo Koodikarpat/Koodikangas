@@ -142,7 +142,7 @@ var shape = {
 
 }
 var direction;
-deltaTime;
+
 var move = function(content) {
 	var coordinates = [];
 	
@@ -155,20 +155,20 @@ var move = function(content) {
 	}
 	switch (direction) {
 		case ("right"):
-			this.x += event.delta/1000*50;;
+			this.x += deltaTime/1000*50;
 			break;
 		case ("left"):
-			this.x -= event.delta/1000*50;;
+			this.x -= deltaTime/1000*50;
 			break;
 		case ("up"): 
-			this.y -= event.delta/1000*50;;
+			this.y -= deltaTime/1000*50;
 			break;
 		case ("down"):
-			this.y += event.delta/1000*50;;
+			this.y += deltaTime/1000*50;
 			break;
 		default: 
-			this.x += coordinates[0] || event.delta/1000*50;;
-			this.y += coordinates[1] || event.delta/1000*50;;
+			this.x += coordinates[0] || deltaTime/1000*50;
+			this.y += coordinates[1] || deltaTime/1000*50;
 			
 }
 

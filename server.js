@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
-
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: false}))
+app.use(bodyParser.json());
 app.use(express.static('website'));
 
-app.get('/', function (req, res) {
+/* app.get('/', function (req, res) {
   res.send('Hello World!')
 });
 app.get('/lasla', function (req, res) {
@@ -17,20 +19,54 @@ app.get('/nakki', function (req, res) {
 });
 app.get('/nimi', function (req, res) {
 	res.send(nimi);
-});
+}); */
 	var koodi;
-	var koodiarr = [];
-app.get('/save', function (req, res) {
-	console.log(req.query);
-	koodi = req.query.code;
-	console.log(koodi);
+	var koodiDB = {
+		/*
+		[token]: "koodi"
+		*/
+	};
 	
+app.post('/save', function (req, res) {
+	console.log(req.body);
+	koodi = req.body.code;
+	console.log(koodi);
+	var rToken = tokenGenerator(16, "abcdefghijklmnopqrstuwxyz");
+	koodiDB[rToken] = koodi;
+	res.status(200).send(rToken);
 });
-app.get('/savedcode', function (req, res) {
-	koodiarr.push(koodi);
-	res.send(koodiarr);
+
+app.get('/load', function (req, res) {
+	/*koodiDB[token];*/
+	var codes = [];
+	for (var token in koodiDB) {
+		codes.push(koodiDB[token]);
+	}
+	res.send({codes: codes, mycode: koodiDB[req.query.token]});
+});
+
+app.get('/save', function() {
+	/*	if (localStorage.getItem('rToken') == undefined){
+		localStorage.setItem('rToken', token)
+		koodiDB[rToken] = value;
+	} else {
+		koodiDB[rToken] = value;
+	}
+	*/	
+	
+	
 });
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 });
+
+
+
+function tokenGenerator (length, chars) {
+	var token = "";
+	for (i = length; i > 0; i--) {
+		token += chars[Math.floor (Math.random() * chars.length)]; 
+	} 
+	return token;
+}
