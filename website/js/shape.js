@@ -83,18 +83,18 @@ var shape = {
 		stage.addChild(salmiakki);
 		return salmiakki;
 	},
-	hollow: function(color) {
-		var hollow = new createjs.Shape();
-		hollow.graphics.beginFill (color || "red");
-		hollow.graphics.moveTo(20, 20);
-		hollow.graphics.arcTo(140, 20, 140, 40, 50);
-		hollow.graphics.lineTo(140, 240);
-		hollow.graphics.arcTo(20, 240, 20, 220, 50);
-		hollow.graphics.closePath();
-		hollow.x = 200;
-		hollow.y = 200;
-		stage.addChild(hollow);
-		return hollow;
+	palikka: function(color) {
+		var palikka = new createjs.Shape();
+		palikka.graphics.beginFill (color || "red");
+		palikka.graphics.moveTo(20, 20);
+		palikka.graphics.arcTo(140, 20, 140, 40, 50);
+		palikka.graphics.lineTo(140, 240);
+		palikka.graphics.arcTo(20, 240, 20, 220, 50);
+		palikka.graphics.closePath();
+		palikka.x = 200;
+		palikka.y = 200;
+		stage.addChild(palikka);
+		return palikka;
 	},
 	hollow: function(color){
 		var hollow = new createjs.Shape();
