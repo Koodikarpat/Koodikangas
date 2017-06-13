@@ -4,24 +4,24 @@ var shape = {
 		var circle = new createjs.Shape();
 		circle.move= move
 		circle.graphics.beginFill(color || "red").drawCircle(0, 0, 50);
-		circle.x = Math.random() * 500;
-		circle.y = Math.random() * 500;
+		circle.x = 200;
+		circle.y = 200;
 		stage.addChild(circle);
 		return circle;
 	},
 	square: function(color){
 		var square = new createjs.Shape();
 		square.graphics.beginFill(color || "red").drawRect(0, 0, 100, 100);
-		square.x = Math.random() * 500;
-		square.y = Math.random() * 500;
+		square.x = 200;
+		square.y = 200;
 		stage.addChild(square);
 		return square;
 	},
 	rectangle: function(color) {
 		var rectangle = new createjs.Shape();
 		rectangle.graphics.beginFill(color || "red").drawRect(0, 0, 200, 100);
-		rectangle.x = Math.random() * 500;
-		rectangle.y = Math.random() * 500;
+		rectangle.x = 200;
+		rectangle.y = 200;
 		stage.addChild(rectangle);
 		return rectangle;
 	},
@@ -130,9 +130,9 @@ var shape = {
 	
 
 }
-
-var move = function() {
-	var direction;
+var direction;
+deltaTime;
+var move = function(content) {
 	var coordinates = [];
 	
 	for (var i = 0; i < arguments.length; i++){
@@ -141,7 +141,26 @@ var move = function() {
 		} else { 
 			coordinates.push(arguments[i])
 		}
-	this.x +=100
-	this.y +=200
 	}
+	switch (direction) {
+		case ("right"):
+			this.x += event.delta/1000*50;;
+			break;
+		case ("left"):
+			this.x -= event.delta/1000*50;;
+			break;
+		case ("up"): 
+			this.y -= event.delta/1000*50;;
+			break;
+		case ("down"):
+			this.y += event.delta/1000*50;;
+			break;
+		default: 
+			this.x += coordinates[0] || event.delta/1000*50;;
+			this.y += coordinates[1] || event.delta/1000*50;;
+			
 }
+
+}
+
+

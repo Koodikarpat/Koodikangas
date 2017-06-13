@@ -10,12 +10,16 @@ $(document).ready(function(){
 		var value = editor.getValue();
 		stage.removeAllChildren();
 		eval(value);
-		stage.update();
-	});
-		$( "#preview" ).click(function() {
-		var value = editor.getValue();
-		stage.removeAllChildren();
-		eval(value);
+		createjs.Ticker.addEventListener("tick", tick);
+		
+		function tick(event){
+			deltaTime = event.delta;
+			
+			if(typeof update == "function")
+				update();
+				
+			stage.update();
+		}
 		stage.update();
 	});
 	$( "#save" ).click(function() {
