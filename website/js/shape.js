@@ -87,14 +87,25 @@ var shape = {
 		var palikka = new createjs.Shape();
 		palikka.graphics.beginFill (color || "red");
 		palikka.graphics.moveTo(20, 20);
-		palikka.graphics.lineTo(100, 20);
-		palikka.graphics.arcTo(150, 20, 150, 70, 50);
-		palikka.graphics.lineTo(150, 120);
+		palikka.graphics.arcTo(140, 20, 140, 40, 50);
+		palikka.graphics.lineTo(140, 240);
+		palikka.graphics.arcTo(20, 240, 20, 220, 50);
 		palikka.graphics.closePath();
 		palikka.x = 200;
 		palikka.y = 200;
 		stage.addChild(palikka);
 		return palikka;
+	},
+	hollow: function(color){
+		var hollow = new createjs.Shape();
+		hollow.graphics.beginStroke("black").drawRect(-1, -1, 102, 102);
+		hollow.graphics.beginFill(color || "red").drawRect(0, 0, 100, 100);
+		hollow.graphics.beginFill("white").drawRect(25, 25, 50, 50);
+		hollow.graphics.beginStroke("black").drawRect(26, 26, 48, 48);
+		hollow.x = Math.random() * 500;
+		hollow.y = Math.random() * 500;
+		stage.addChild(hollow);
+		return hollow;
 	},
 	
 	line: function(){
@@ -120,9 +131,9 @@ var shape = {
 	},
 	
 	text: function(teksti){
-		var text = new createjs.Text(teksti, "20px Arial", "#ff7700");
-		text.x = Math.random() * 1000;
-		text.y = Math.random() * 1000;
+		var text = new createjs.Text(teksti, "66px Lato", "#ff7700");
+		text.x = Math.random() * 500;
+		text.y = Math.random() * 500;
 		text.textBaseline = "alphabetic";
 		stage.addChild(text);
 		return text;
