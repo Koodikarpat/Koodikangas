@@ -34,3 +34,12 @@ $(document).ready(function(){
 	  });
 	});
 });
+
+function myFunction() {
+	var count = document.getElementById("valikko");
+	if (count.style.display === "none") {
+		count.style.display = "initial";
+	} else {
+		count.style.display = "none";
+	}
+}

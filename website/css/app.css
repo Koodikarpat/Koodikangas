@@ -10,7 +10,6 @@ body {
 
 #codeCanvas {
 	background-color: #f2ede3;
-
 }
 
 h1 {
@@ -20,16 +19,17 @@ h1 {
 
 
 .CodeMirror {
-	border: 1px solid black;
+	border: 3px solid black;
 	vertical-align: bottom;
 }
 
 h2 {
 	margin: 0px;
 	background-color: #b7c8ce;
-	text-align: center;
 	font-size: 48px;
 	font-family: Orbitron;
+	position: relative;
+	text-align: center;
 }
 
 #otsake {
@@ -38,22 +38,41 @@ h2 {
 	border-style:double;
 	border-color: #08231c;
 	border-width: 4px;
-	margin: 1px 0px 0px 0px;
 }
 
-#menu {
-	position: relative; /* korjaa!   https://stackoverflow.com/questions/8684678/jquery-onclick-image-show-hidden-table-row */
-	float: right;
-	margin: 2px 0px 0px 0px;
-	$("menu").on("click", "valikko", function(){
-    $("valikko:show").hidden();
-});
-}
 
 #valikko {
 	position: relative;
-	float:right;
-	display: none;
+	float: right;
+}
+h2 button {
+	float: right;
+	position: relative;
+	bottom: -1px;
+	height: 64px;
+	width: 64px;
+	z-index: 1;
+}
+#nappi img {
+	position: relative;
+	right: 10px;
+	bottom: 2px;
+	display: block;
+	height: 64px;
+	width: 64px;
+	z-index: 1;
+}
+#preview {
+	width: 64x;
+	height: 32px;
+	float: left;
+}
+#save {
+	width: 64x;
+	height: 32px;
+	float: left;
+	position: relative;
+	left: 40px;
 }
 
 @font-face { font-family: Orbitron; src: url('https://fonts.google.com/specimen/Orbitron'); }
