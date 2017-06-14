@@ -2,7 +2,7 @@
 var shape = {
 	circle: function(color) {
 		var circle = new createjs.Shape();
-		circle.move= move
+		circle.move = move
 		circle.graphics.beginFill(color || "red").drawCircle(0, 0, 50);
 		circle.x = 200;
 		circle.y = 200;

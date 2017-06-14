@@ -31,9 +31,16 @@ app.post('/save', function (req, res) {
 	console.log(req.body);
 	koodi = req.body.code;
 	console.log(koodi);
-	var rToken = tokenGenerator(16, "abcdefghijklmnopqrstuwxyz");
-	koodiDB[rToken] = koodi;
-	res.status(200).send(rToken);
+	var token;
+	if (req.body.token) {
+		token = req.body.token;
+	
+	} else {
+		token = tokenGenerator(16, "abcdefghijklmnopqrstuwxyz");
+	}
+	koodiDB[token] = koodi;
+	res.status(200).send(token);
+	
 });
 
 app.get('/load', function (req, res) {
@@ -45,20 +52,8 @@ app.get('/load', function (req, res) {
 	res.send({codes: codes, mycode: koodiDB[req.query.token]});
 });
 
-app.get('/save', function() {
-	/*	if (localStorage.getItem('rToken') == undefined){
-		localStorage.setItem('rToken', token)
-		koodiDB[rToken] = value;
-	} else {
-		koodiDB[rToken] = value;
-	}
-	*/	
-	
-	
-});
-
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+  console.log('Koodikangas listening on port 3000!')
 });
 
 
