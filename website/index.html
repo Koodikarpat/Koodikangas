@@ -22,7 +22,8 @@
 
 <script type="text/javascript" src="js/codemirror-5.26.0/addon/display/placeholder.js"></script>
 <script type="text/javascript" src="js/otsikko.js"></script>
-
+<script src="js\paulkinzett-toolbar-fbfde3e/jquery.toolbar.js"></script>
+<link href="js\paulkinzett-toolbar-fbfde3e/jquery.toolbar.css" rel="stylesheet" />
 
 <meta charset="UTF-8">
 </head>
@@ -30,12 +31,20 @@
 <body onload="init();">
 
 <h2>
-<button id="nappi" onclick="myFunction()";><img id="menu" src="images/menu.png";></button>
-<div id="valikko" style="display:none";><img src="images/valikko.png";></div>
-<p id="otsake">Koodikangas</p>
+
+<div id="nappula" class="btn-toolbar"><img id="menuimg" src="images/menu.png"></div>
+<div id="toolbar-options" class="hidden">
+   <a href="#"><img src="images/neliömenu.png"><i></i></a>
+   <a href="#"><img src="images/ympyrämenu.png"><i></i></a>
+   <a id="drawlink" target="_blank" href="draw.html"><img src="images/drawmenu.png"><i></i></a>
+   <a href="#"><i></i></a>
+   <a href="#"><img src="images/infomenu.png"><i></i></a>
+</div>
+
+<p id="otsake"><text>Koodikangas</text></p>
 </h2>
 
-  <canvas id="codeCanvas" width="800" height="600"></canvas>
+<canvas id="codeCanvas" width="800" height="600"></canvas>
   <div id="texteditor">
   <textarea id="text-area" class="codemirror-textarea" placeholder="Hei! 
 Tervetuloa käyttämään koodikangasta! 
@@ -49,5 +58,8 @@ luo sinisen ympyrän!"></textarea>
   <button id="save">Tallenna</button>
   </div>
 </body>
-
+<script src="js/effects.js"></script>
+<script>
+        initDraw(document.getElementById('codeCanvas'));
+    </script>
 </html>

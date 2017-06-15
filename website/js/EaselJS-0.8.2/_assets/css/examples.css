@@ -1,0 +1,73 @@
+body {
+	width: 960px;
+}
+
+header {
+	margin-bottom: 1rem;
+}
+
+h1 {
+	font-weight: 200;
+	margin-bottom: 1rem;
+	font-size: 32px;
+}
+
+h1:before {
+	content:" Koodikangas ";
+	font-weight: bold;
+	position: relative;
+	text-align: center;
+}
+
+header p {
+	margin: 0;
+	padding: 1em;
+	background: rgba(250, 252, 255, 0.7);
+	position: relative;
+	text-align: center;
+}
+
+.content, canvas {
+	background: white;
+}
+
+.content {
+	width: 960px;
+	height: 550px;
+	overflow: hidden;
+}
+
+.loading {
+	position: relative;
+}
+
+.loading:after {
+	content: url("js\EaselJS-0.8.2\_assets\art/art/loading.gif");
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -13px 0 0 -51px;
+	opacity: 0.8;
+}
+
+#error {
+	display:none;
+	width: 960px;
+	text-align: left;
+	padding: 10px;
+}
+
+#mobile {
+    display:none;
+    width: 960px;
+    text-align: left;
+    padding: 10px;
+}
+
+body.embedded header {
+	display: none;
+}
+
+body.embedded {
+	margin: 0;
+}

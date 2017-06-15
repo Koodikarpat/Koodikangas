@@ -13,8 +13,7 @@ $(document).ready(function(){
 
 		if(typeof update == "function")
 			update();
-			
-		stage.update();
+			stage.update();
 	}
 	
 	$( "#preview" ).click(function() {
