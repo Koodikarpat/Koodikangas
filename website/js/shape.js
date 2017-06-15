@@ -2,7 +2,7 @@
 var shape = {
 	circle: function(color) {
 		var circle = new createjs.Shape();
-		circle.move = move
+		circle.move = move;
 		circle.graphics.beginFill(color || "red").drawCircle(0, 0, 50);
 		circle.x = 200;
 		circle.y = 200;
@@ -11,6 +11,7 @@ var shape = {
 	},
 	square: function(color){
 		var square = new createjs.Shape();
+		square.move = move;
 		square.graphics.beginFill(color || "red").drawRect(0, 0, 100, 100);
 		square.x = 200;
 		square.y = 200;
@@ -19,6 +20,7 @@ var shape = {
 	},
 	rectangle: function(color) {
 		var rectangle = new createjs.Shape();
+		rectangle.move = move;
 		rectangle.graphics.beginFill(color || "red").drawRect(0, 0, 200, 100);
 		rectangle.x = 200;
 		rectangle.y = 200;
@@ -27,6 +29,7 @@ var shape = {
 	},
 	triangle: function(color) {
 		var triangle = new createjs.Shape();
+		triangle.move = move;
 		triangle.graphics.beginFill(color || "red");
 		triangle.graphics.moveTo(75, 50);
 		triangle.graphics.lineTo(125, 125);
@@ -40,6 +43,7 @@ var shape = {
 	},
 	star: function(color) {
 		var star = new createjs.Shape();
+		star.move = move;
 		star.graphics.beginFill (color || "red");
 		star.graphics.moveTo(75, 50);
 		star.graphics.lineTo(125, 125);
@@ -57,6 +61,7 @@ var shape = {
 	},
 	hexagon: function(color) {
 		var hexagon = new createjs.Shape();
+		hexagon.move = move;
 		hexagon.graphics.beginFill (color || "red");
 		hexagon.graphics.moveTo(50, 50);
 		hexagon.graphics.lineTo(150, 50);
@@ -72,6 +77,7 @@ var shape = {
 	},
 	salmiakki: function(color) {
 		var salmiakki = new createjs.Shape();
+		salmiakki.move = move;
 		salmiakki.graphics.beginFill (color || "red");
 		salmiakki.graphics.moveTo(100, 50);
 		salmiakki.graphics.lineTo(150, 125);
@@ -85,6 +91,7 @@ var shape = {
 	},
 	palikka: function(color) {
 		var palikka = new createjs.Shape();
+		palikka.move = move;
 		palikka.graphics.beginFill (color || "red");
 		palikka.graphics.moveTo(20, 20);
 		palikka.graphics.arcTo(140, 20, 140, 40, 50);
@@ -98,6 +105,7 @@ var shape = {
 	},
 	hollow: function(color){
 		var hollow = new createjs.Shape();
+		hollow.move = move;
 		hollow.graphics.beginStroke("black").drawRect(-1, -1, 102, 102);
 		hollow.graphics.beginFill(color || "red").drawRect(0, 0, 100, 100);
 		hollow.graphics.beginFill("white").drawRect(25, 25, 50, 50);
@@ -132,6 +140,7 @@ var shape = {
 	
 	text: function(teksti){
 		var text = new createjs.Text(teksti, "66px Lato", "#ff7700");
+		text.move = move
 		text.x = Math.random() * 500;
 		text.y = Math.random() * 500;
 		text.textBaseline = "alphabetic";
@@ -155,20 +164,20 @@ var move = function(content) {
 	}
 	switch (direction) {
 		case ("right"):
-			this.x += deltaTime/1000*50;
+			this.x += deltaTime/1000*this.speed || 50;
 			break;
 		case ("left"):
-			this.x -= deltaTime/1000*50;
+			this.x -= deltaTime/1000*this.speed || 50;
 			break;
 		case ("up"): 
-			this.y -= deltaTime/1000*50;
+			this.y -= deltaTime/1000*this.speed || 50;
 			break;
 		case ("down"):
-			this.y += deltaTime/1000*50;
+			this.y += deltaTime/1000*this.speed || 50;
 			break;
 		default: 
-			this.x += coordinates[0] || deltaTime/1000*50;
-			this.y += coordinates[1] || deltaTime/1000*50;
+			this.x += coordinates[0] || deltaTime/1000*this.speed;
+			this.y += coordinates[1] || deltaTime/1000*this.speed;
 			
 }
 
