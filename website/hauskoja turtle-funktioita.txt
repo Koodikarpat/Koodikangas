@@ -1,0 +1,48 @@
+turtle.show();
+i = 5;
+turtle.forward(i);
+update = function(){
+i++;
+turtle.forward(15);
+turtle.turn(i);
+}
+
+
+turtle.show();
+i = 3;
+turtle.forward(i*2);
+update = function(){
+i += 0.5;
+  if ( i > 40) {
+  i-= 100}
+  console.log(i);
+  turtle.color = randomColor();
+turtle.forward(15);
+turtle.turn(i);
+}
+
+
+turtle.show();
+i = 1;
+update = function(){
+  turtle.color = randomColor();
+	i = (i+1);
+	if (i > 72) {
+      i = 1;
+  }
+  turtle.forward(10);
+  turtle.turn(i);
+}
+
+
+turtle.show();
+i = 1;
+update = function(){
+  turtle.color = randomColor();
+	i = (i+1);
+	if (i > 18) {
+      i = 1;
+  }
+  turtle.forward(10);
+  turtle.turn(i);
+}
