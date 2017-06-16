@@ -1,6 +1,6 @@
 
 var stage;
-    
+var codes;
 
   function init() {
     stage = new createjs.Stage("codeCanvas");
@@ -9,6 +9,7 @@ var stage;
 		method: "GET",
 		url: "/load",
 		data: {token: localStorage.getItem('rToken')}	
+		
 	})
 	.done( function ( data ) {
 		console.log(data);
@@ -25,4 +26,6 @@ var stage;
 		stage.update();
 	});
   }
-
+watch(codes, function(){
+	alert("Joku tallensi jotain :D");
+});

@@ -1,0 +1,23 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+		
+		//1,1,2,3,5,8,13,21,34
+	
+	var a, b, result;
+	a=0;
+	b=1;
+	result=b;
+	for (var i = 1; i < 10000; i++) {
+	console.log(a+b);
+	document.write(result + "</br>");
+	result=a+b;
+	a=b
+	b=result;
+	}
+		
+</script>
+</body>
+</html>

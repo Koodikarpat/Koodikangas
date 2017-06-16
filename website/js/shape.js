@@ -1,18 +1,18 @@
 
 var shape = {
-	circle: function(color) {
+	circle: function(color, radius) {
 		var circle = new createjs.Shape();
 		circle.move = move;
-		circle.graphics.beginFill(color || "red").drawCircle(0, 0, 50);
+		circle.graphics.beginFill(color || "red").drawCircle(0, 0, radius || 50);
 		circle.x = 200;
 		circle.y = 200;
 		stage.addChild(circle);
 		return circle;
 	},
-	square: function(color){
+	square: function(color, sidelength){
 		var square = new createjs.Shape();
 		square.move = move;
-		square.graphics.beginFill(color || "red").drawRect(0, 0, 100, 100);
+		square.graphics.beginFill(color || "red").drawRect(0, 0, sidelength || 100, sidelength || 100);
 		square.x = 200;
 		square.y = 200;
 		stage.addChild(square);
@@ -183,4 +183,11 @@ var move = function(content) {
 
 }
 
-
+function randomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++ ) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}

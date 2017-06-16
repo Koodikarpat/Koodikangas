@@ -19,6 +19,7 @@ $(document).ready(function(){
 	$( "#preview" ).click(function() {
 		var value = editor.getValue();
 		stage.removeAllChildren();
+		turtle.reset();
 		eval(value);
 		
 	});
