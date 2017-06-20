@@ -7,7 +7,7 @@ var turtle = {
 		this.turtle.regX = this.turtle.image.width/2;
 		this.turtle.regY = this.turtle.image.height/2;
 		console.log(this.turtle);
-		stage.addChild(this.turtle);
+		addToStage(this.turtle);
 		this.turtle.drawing = true;
 		return this.turtle;
 	},

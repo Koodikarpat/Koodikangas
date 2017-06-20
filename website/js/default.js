@@ -11,9 +11,10 @@ $(document).ready(function(){
 	function tick(event){
 		deltaTime = event.delta;
 
-		if(typeof update == "function")
+		if(typeof update == "function") 
 			update();
 			stage.update();
+		
 	}
 	
 	$( "#preview" ).click(function() {

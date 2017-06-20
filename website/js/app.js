@@ -26,6 +26,20 @@ var codes;
 		stage.update();
 	});
   }
+
 watch(codes, function(){
-	alert("Joku tallensi jotain :D");
+	console.log("Joku tallensi jotain :D");
 });
+
+var test = "WHIII";
+
+console.log("JEEJEE");
+
+watch(test, function(){
+	console.log("HIHEHI");
+});
+
+setTimeout(function(){
+	test = "JEEJEJEE";
+	console.log("JAAJAA");
+}, 1000);

@@ -2,34 +2,34 @@
 var shape = {
 	circle: function(color, radius) {
 		var circle = new createjs.Shape();
-		circle.move = move;
+		addFunctions(circle);
 		circle.graphics.beginFill(color || "red").drawCircle(0, 0, radius || 50);
 		circle.x = 200;
 		circle.y = 200;
-		stage.addChild(circle);
+		addToStage(circle);
 		return circle;
 	},
 	square: function(color, sidelength){
 		var square = new createjs.Shape();
-		square.move = move;
+		addFunctions(square);
 		square.graphics.beginFill(color || "red").drawRect(0, 0, sidelength || 100, sidelength || 100);
 		square.x = 200;
 		square.y = 200;
-		stage.addChild(square);
+		addToStage(square);
 		return square;
 	},
 	rectangle: function(color) {
 		var rectangle = new createjs.Shape();
-		rectangle.move = move;
+		addFunctions(rectangle);
 		rectangle.graphics.beginFill(color || "red").drawRect(0, 0, 200, 100);
 		rectangle.x = 200;
 		rectangle.y = 200;
-		stage.addChild(rectangle);
+		addToStage(rectangle);
 		return rectangle;
 	},
 	triangle: function(color) {
 		var triangle = new createjs.Shape();
-		triangle.move = move;
+		addFunctions(triangle);
 		triangle.graphics.beginFill(color || "red");
 		triangle.graphics.moveTo(75, 50);
 		triangle.graphics.lineTo(125, 125);
@@ -38,12 +38,12 @@ var shape = {
 		triangle.graphics.beginFill(color || "red");
 		triangle.x = 180;
 		triangle.y = 180;
-		stage.addChild(triangle);
+		addToStage(triangle);
 		return triangle;
 	},
 	star: function(color) {
 		var star = new createjs.Shape();
-		star.move = move;
+		addFunctions(star);
 		star.graphics.beginFill (color || "red");
 		star.graphics.moveTo(75, 50);
 		star.graphics.lineTo(125, 125);
@@ -56,12 +56,12 @@ var shape = {
 		star.graphics.beginFill(color || "red");
 		star.x = 100;
 		star.y = 100;
-		stage.addChild(star);
+		addToStage(star);
 		return star;
 	},
 	hexagon: function(color) {
 		var hexagon = new createjs.Shape();
-		hexagon.move = move;
+		addFunctions(hexagon);
 		hexagon.graphics.beginFill (color || "red");
 		hexagon.graphics.moveTo(50, 50);
 		hexagon.graphics.lineTo(150, 50);
@@ -72,12 +72,12 @@ var shape = {
 		hexagon.graphics.closePath();
 		hexagon.x = 110;
 		hexagon.y = 110;
-		stage.addChild(hexagon);
+		addToStage(hexagon);
 		return hexagon;
 	},
 	salmiakki: function(color) {
 		var salmiakki = new createjs.Shape();
-		salmiakki.move = move;
+		addFunctions(salmiakki);
 		salmiakki.graphics.beginFill (color || "red");
 		salmiakki.graphics.moveTo(100, 50);
 		salmiakki.graphics.lineTo(150, 125);
@@ -86,12 +86,12 @@ var shape = {
 		salmiakki.graphics.closePath();
 		salmiakki.x = 200;
 		salmiakki.y = 200;
-		stage.addChild(salmiakki);
+		addToStage(salmiakki);
 		return salmiakki;
 	},
 	palikka: function(color) {
 		var palikka = new createjs.Shape();
-		palikka.move = move;
+		addFunctions(palikka);
 		palikka.graphics.beginFill (color || "red");
 		palikka.graphics.moveTo(20, 20);
 		palikka.graphics.arcTo(140, 20, 140, 40, 50);
@@ -100,19 +100,19 @@ var shape = {
 		palikka.graphics.closePath();
 		palikka.x = 200;
 		palikka.y = 200;
-		stage.addChild(palikka);
+		addToStage(palikka);
 		return palikka;
 	},
 	hollow: function(color){
 		var hollow = new createjs.Shape();
-		hollow.move = move;
+		addFunctions(hollow);
 		hollow.graphics.beginStroke("black").drawRect(-1, -1, 102, 102);
 		hollow.graphics.beginFill(color || "red").drawRect(0, 0, 100, 100);
 		hollow.graphics.beginFill("white").drawRect(25, 25, 50, 50);
 		hollow.graphics.beginStroke("black").drawRect(26, 26, 48, 48);
 		hollow.x = Math.random() * 500;
 		hollow.y = Math.random() * 500;
-		stage.addChild(hollow);
+		addToStage(hollow);
 		return hollow;
 	},
 	
@@ -144,7 +144,7 @@ var shape = {
 		text.x = Math.random() * 500;
 		text.y = Math.random() * 500;
 		text.textBaseline = "alphabetic";
-		stage.addChild(text);
+		addToStage(text);
 		return text;
 	},
 	
@@ -183,6 +183,30 @@ var move = function(content) {
 
 }
 
+ function addToStage(object) {
+	 if(currentObjects == maxobjects) {
+	 alert("Et voi luoda enempää muotoja! Poista jokin muoto ennen kuin jatkat.");
+	 } else {
+	 stage.addChild(object);
+	 stagearray.push(object);
+	 currentObjects++;
+	 }
+	 
+ }
+ function remove(){
+	stage.removeChild(this)
+	stagearray.pop(stagearray.indexOf(this));
+	currentObjects--;
+ }
+ 
+ function addFunctions(object){
+	 object.move = move;
+	 object.remove = remove;
+ }
+ 
+ var maxobjects = "a";
+ var currentObjects = 0;
+ var stagearray = [];
 function randomColor() {
   var letters = '0123456789ABCDEF';
   var color = '#';

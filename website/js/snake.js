@@ -1,3 +1,5 @@
+function snake(){
+
 var squares = [];
 var x = 100;
 var y = 100;
@@ -89,4 +91,5 @@ update = function(){
       squares.push(square);
     }
   }
+}
 }
