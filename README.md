@@ -13,6 +13,20 @@ Koodikangaksen toiminnallisuuksia:
     turtle.show(); // näyttää turtlen
     turtle.width = x; //turtlen jättämän viivan leveys
     turtle.color = randomColor(); //antaa värin, voidaan käyttää myös arvottua väriä kuten tässä.
-	  turtle.forward(x) //Pikseleinä siirtyminen
+    turtle.forward(x) //Pikseleinä siirtyminen
     turtle.turn(x); //asteina käännös 
-  - CodeMirroria hyödyntävä tekstinsyöttöalusta. //Helpottaa koodaamista, sillä korostaa merkittäviä osia kirjoitu
+  - CodeMirroria hyödyntävä tekstinsyöttöalusta. //Helpottaa koodaamista, sillä korostaa koodin mielekkäitä osia. 
+  - Update funktiolla animaatioita!
+  esim: 
+turtle.show();
+i = 3;
+turtle.forward(i*2);
+update = function(){
+i += 0.5;
+  if ( i > 40) {
+  i-= 100}
+  console.log(i);
+  turtle.color = randomColor();
+turtle.forward(15);
+turtle.turn(i);
+}
