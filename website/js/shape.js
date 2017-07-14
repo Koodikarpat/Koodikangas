@@ -1,28 +1,102 @@
 var shape = {
-	circle: function(color, radius) {
+	circle: function(color, radius, x, y) {
 		var circle = new createjs.Shape();
+		circle.radius = radius || 50;
 		addFunctions(circle);
-		circle.graphics.beginFill(color || "this").drawCircle(200, 200, radius || 50 );
+		circle.graphics.beginFill(color || "this").drawCircle(x || 200, y || 200, circle.radius);
 		circle.radius = function(radius) {
 			var newcircle = new createjs.Shape();
 			console.log(this);
-			newcircle.graphics.beginFill(color || "this").drawCircle(200, 200, radius || 50 );
+			newcircle.graphics.beginFill(color || "this").drawCircle(x || 200, y || 200, radius || 50 );
 			this.remove();
 			addFunctions(newcircle);
 			addToStage(newcircle);
 			return newcircle;	
 		}
+		circle.color = function(color) {
+			var newcircle = new createjs.Shape();
+			console.log(this);
+			newcircle.graphics.beginFill(color || "this").drawCircle(x || 200, y || 200, radius || 50 );
+			this.remove();
+			addFunctions(newcircle);
+			addToStage(newcircle);
+			return newcircle;	
+		}
+		circle.place = function(x, y) {
+			var newcircle = new createjs.Shape();
+			console.log(this);
+			newcircle.graphics.beginFill(color || "this").drawCircle(x || 200, y || 200, radius || 50 );
+			this.remove();
+			addFunctions(newcircle);
+			addToStage(newcircle);
+			return newcircle;
+		}
+
 		addToStage(circle);
 		return circle;	
 	},
-	square: function(color, sidelength) {
+	ellipse: function(color, width, height, x, y) {
+		var ellipse = new createjs.Shape();
+		ellipse.radius = 200, 100;
+		addFunctions(ellipse);
+		ellipse.graphics.beginFill(color || "this").drawEllipse(x || 200, y || 200, width || 200, height || 100);
+		console.log(this);
+		ellipse.radius = function(width, height) {
+			var newellipse = new createjs.Shape();
+			console.log(this);
+			newellipse.graphics.beginFill(color || "this").drawEllipse(x || 200, y || 200, width || 200);
+			this.remove();
+			addFunctions(newellipse);
+			addToStage(newellipse);
+			return newellipse;
+		}
+		ellipse.color = function(color) {
+			var newellipse = new createjs.Shape();
+			console.log(this);
+			newellipse.graphics.beginFill(color || "this").drawEllipse(x || 200, y || 200, width || 200, height || 100);
+			this.remove();
+			addFunctions(newellipse);
+			addToStage(newellipse);
+			return newellipse;
+		}
+		ellipse.place = function(x, y) {
+			var newellipse = new createjs.Shape();
+			console.log(this);
+			newellipse.graphics.beginFill(color || "this").drawEllipse(x || 200, y || 200, width || 200, height || 100);
+			this.remove();
+			addFunctions(newellipse);
+			addToStage(newellipse);
+			return newellipse;
+		}
+		addToStage(ellipse);
+		return ellipse;
+	},
+	square: function(color, sidelength, x, y) {
 		var square = new createjs.Shape();
 		addFunctions(square);
-		square.graphics.beginFill(color || "this").drawRect(200, 200, sidelength || 100, sidelength || 100);
+		square.graphics.beginFill(color || "this").drawRect(x || 200, y || 200, sidelength || 100, sidelength || 100);
 		square.sidelength = function(sidelength) {
 			var newsquare = new createjs.Shape();
 			console.log(this);
-			newsquare.graphics.beginFill(color || "this").drawRect(200, 200, sidelength || 100, sidelength || 100);
+			newsquare.graphics.beginFill(color || "this").drawRect(x || 200, y || 200, sidelength || 100, sidelength || 100);
+			this.remove();
+			addFunctions(newsquare);
+			addToStage(newsquare);
+			return newsquare;
+		}
+		square.color = function(color) {
+			var newsquare = new createjs.Shape();
+			console.log(this);
+			newsquare.graphics.beginFill(color || "this").drawRect(x || 200, y || 200, sidelength || 100, sidelength || 100);
+			this.remove();
+			addFunctions(newsquare);
+			addToStage(newsquare);
+			return newsquare;
+		}
+		square.place = function(x, y) {
+			var newsquare = new createjs.Shape();
+			console.log(this);
+			newsquare.graphics.beginFill(color || "this").drawRect(x || 200, y || 200, sidelength || 100, sidelength || 100);
 			this.remove();
 			addFunctions(newsquare);
 			addToStage(newsquare);
@@ -31,40 +105,62 @@ var shape = {
 		addToStage(square);
 		return square;
 	},
-rectangle: function(color, width, height) {
+	rectangle: function(color, width, height, x, y) {
 		var rectangle = new createjs.Shape();
-		rectangle.w = width || 400;
-		rectangle.h = height || 100;
 		addFunctions(rectangle);
-		rectangle.graphics.beginFill(color || "this").drawRect(200, 300, rectangle.h, rectangle.h);
-		
-		rectangle.width = function(width)  {
+		rectangle.graphics.beginFill(color || "this").drawRect(x || 200, y || 300, width || 200, height || 100);
+		rectangle.sidelength = function(width, height) {
 			var newrectangle = new createjs.Shape();
-			console.log(this.w, this.h);
-			newrectangle.w = width || 400;
-			newrectangle.graphics.beginFill(color || "this").drawRect(200, 300, newrectangle.w, this.h || 100);
+			console.log(this);
+			newrectangle.graphics.beginFill(color || "this").drawRect(x || 200, y || 300, width || 200, height || 100);
 			this.remove();
 			addFunctions(newrectangle);
-			newrectangle.height = this.height;
-			newrectangle.width = this.width;
 			addToStage(newrectangle);
 			return newrectangle;
 		}
-		rectangle.height = function(height)  {
+		rectangle.width = function(width) {
 			var newrectangle = new createjs.Shape();
-			console.log(this.w, this.h, this);
-			newrectangle.h = height || 400;
-			newrectangle.graphics.beginFill(color || "this").drawRect(200, 300, this.w || 400, newrectangle.h);
+			console.log(this.width, this.height);
+			newrectangle.graphics.beginFill(color || "this").drawRect( x || 200, y || 300, width || 200, height || 100);
+			newrectangle.height = this.height;
 			this.remove();
 			addFunctions(newrectangle);
-			newrectangle.height = this.height;
+			addToStage(newrectangle);
+			return newrectangle;
+		}
+		rectangle.height = function(height) {
+			var newrectangle = new createjs.Shape();
+			console.log(this.width, this.height);
+			newrectangle.graphics.beginFill(color || "this").drawRect( x || 200, y || 300, width || 200, height || 100);
 			newrectangle.width = this.width;
+			this.remove();
+			addFunctions(newrectangle);
+			addToStage(newrectangle);
+			return newrectangle;
+		}
+		rectangle.color = function(color) {
+			var newrectangle = new createjs.Shape();
+			console.log(this.width, this.height);
+			newrectangle.graphics.beginFill(color || "this").drawRect( x || 200, y || 300, width || 200, height || 100);
+			newrectangle.width = this.width;
+			newrectangle.height = this.height;
+			this.remove();
+			addFunctions(newrectangle);
+			addToStage(newrectangle);
+			return newrectangle;
+		}
+		rectangle.place = function(x, y) {
+			var newrectangle = new createjs.Shape();
+			console.log(this);
+			newrectangle.graphics.beginFill(color || "this").drawRect(x || 200, y || 200, sidelength || 100, sidelength || 100);
+			this.remove();
+			addFunctions(newrectangle);
 			addToStage(newrectangle);
 			return newrectangle;
 		}
 		addToStage(rectangle);
 		return rectangle;
-	},	
+	},
 	triangle: function(color) {
 		var triangle = new createjs.Shape();
 		addFunctions(triangle);
@@ -76,6 +172,22 @@ rectangle: function(color, width, height) {
 		triangle.graphics.beginFill(color || "red");
 		triangle.x = 180;
 		triangle.y = 180;
+		triangle.color = function(color) {
+			var newtriangle = new createjs.Shape();
+			console.log(this.triangle);
+			newtriangle.graphics.beginFill(color || "this");
+			newtriangle.graphics.moveTo(75, 50);
+			newtriangle.graphics.lineTo(125, 125);
+			newtriangle.graphics.lineTo(175, 50);
+			newtriangle.graphics.closePath();
+			newtriangle.graphics.beginFill(color || "this");
+			newtriangle.x = 180;
+			newtriangle.y = 180;
+			this.remove();
+			addFunctions(newtriangle);
+			addToStage(newtriangle);
+			return newtriangle;
+		}
 		addToStage(triangle);
 		return triangle;
 	},
@@ -90,13 +202,29 @@ rectangle: function(color, width, height) {
 		kite.graphics.lineTo(75, 0);
 		kite.x = 100;
 		kite.y = 100;
+		kite.color = function(color) {
+			var newkite = new createjs.Shape();
+			console.log(this.triangle);
+			newkite.graphics.beginFill(color || "red");
+			newkite.graphics.moveTo(75, 0);
+			newkite.graphics.lineTo(150, 75);
+			newkite.graphics.lineTo(75, 250);
+			newkite.graphics.lineTo(0, 75);
+			newkite.graphics.lineTo(75, 0);
+			newkite.x = 100;
+			newkite.y = 100;
+			this.remove();
+			addFunctions(newkite);
+			addToStage(newkite);
+			return newkite;
+		}
 		addToStage(kite);
 		return kite; 
 	},
 	härpäke: function(color) {
 		var härpäke = new createjs.Shape();
 		addFunctions(härpäke);
-		härpäke.graphics.beginFill(color || "red");
+		härpäke.graphics.beginFill (color || "red");
 		härpäke.graphics.moveTo (175, 215);
 		härpäke.graphics.lineTo (Math.random() * 300, Math.random() * 100);
 		härpäke.graphics.lineTo (Math.random() * 300, Math.random() * 100);
@@ -112,6 +240,30 @@ rectangle: function(color, width, height) {
 		härpäke.graphics.lineTo (175, 215);
 		härpäke.x = 400
 		härpäke.y = 400
+		härpäke.color = function(color) {
+			var newhärpäke = new createjs.Shape();
+			console.log(this.härpäke);
+			newhärpäke.graphics.beginFill (color || "red");
+			newhärpäke.graphics.moveTo (175, 215);
+			newhärpäke.graphics.lineTo (Math.random() * 300, Math.random() * 100);
+			newhärpäke.graphics.lineTo (Math.random() * 300, Math.random() * 100);
+			newhärpäke.graphics.lineTo (Math.random() * 300, Math.random() * 100);
+			newhärpäke.graphics.lineTo (Math.random() * 300, Math.random() * 100);
+			newhärpäke.graphics.lineTo (Math.random() * 300, Math.random() * 100);
+			newhärpäke.graphics.lineTo (Math.random() * 300, Math.random() * 100);
+			newhärpäke.graphics.lineTo (Math.random() * 300, Math.random() * 100);
+			newhärpäke.graphics.lineTo (Math.random() * 300, Math.random() * 100);
+			newhärpäke.graphics.lineTo (Math.random() * 300, Math.random() * 100);
+			newhärpäke.graphics.lineTo (Math.random() * 300, Math.random() * 100);
+			newhärpäke.graphics.lineTo (Math.random() * 300, Math.random() * 100);
+			newhärpäke.graphics.lineTo (175, 215);
+			newhärpäke.x = 400
+			newhärpäke.y = 400
+			this.remove();
+			addFunctions(newhärpäke);
+			addToStage(newhärpäke);
+			return newhärpäke;
+		}
 		addToStage(härpäke);
 		return härpäke;
 	},	
@@ -127,13 +279,30 @@ rectangle: function(color, width, height) {
 		parallelogram.graphics.closePath();
 		parallelogram.x = 150;
 		parallelogram.y = 150;
+		parallelogram.color = function(color) {
+			var newparallelogram = new createjs.Shape();
+			console.log(this.parallelogram);
+			newparallelogram.graphics.beginFill (color ||"red");
+			newparallelogram.graphics.moveTo(50, 0);
+			newparallelogram.graphics.lineTo(300, 0);
+			newparallelogram.graphics.lineTo(250, 200);
+			newparallelogram.graphics.lineTo(0, 200);
+			newparallelogram.graphics.lineTo(50, 0);
+			newparallelogram.graphics.closePath();
+			newparallelogram.x = 150;
+			newparallelogram.y = 150;
+			this.remove();
+			addFunctions(newparallelogram);
+			addToStage(newparallelogram);
+			return newparallelogram;
+		}
 		addToStage(parallelogram);
 		return parallelogram;
 	},
 	star: function(color) {
 		var star = new createjs.Shape();
 		addFunctions(star);
-		star.graphics.beginFill (color || "red");
+		star.graphics.beginFill(color || "red");
 		star.graphics.moveTo(75, 50);
 		star.graphics.lineTo(125, 125);
 		star.graphics.lineTo(175, 50);
@@ -145,8 +314,140 @@ rectangle: function(color, width, height) {
 		star.graphics.beginFill(color || "red");
 		star.x = 100;
 		star.y = 100;
+		star.color = function(color) {
+			var newstar = new createjs.Shape();
+			console.log(this.star);
+			newstar.graphics.beginFill(color || "red");
+			newstar.graphics.moveTo(75, 50);
+			newstar.graphics.lineTo(125, 125);
+			newstar.graphics.lineTo(175, 50);
+			newstar.graphics.closePath();
+			newstar.graphics.moveTo(75, 100);
+			newstar.graphics.lineTo(175, 100);
+			newstar.graphics.lineTo(125, 25);
+			newstar.graphics.closePath();
+			newstar.graphics.beginFill(color || "red");
+			newstar.x = 100;
+			newstar.y = 100;
+			this.remove();
+			addFunctions(newstar);
+			addToStage(newstar);
+			return newstar;
+		}
 		addToStage(star);
 		return star;
+	},
+	hollowstar: function(color) {
+		var hollowstar = new createjs.Shape();
+		addFunctions(hollowstar);
+		hollowstar.graphics.beginFill (color || "red");
+		hollowstar.graphics.moveTo(250, 0);
+		hollowstar.graphics.lineTo(300, 190);
+		hollowstar.graphics.lineTo(500, 190);
+		hollowstar.graphics.lineTo(350, 310);
+		hollowstar.graphics.lineTo(400, 500);
+		hollowstar.graphics.lineTo(250, 390);
+		hollowstar.graphics.lineTo(100, 500);
+		hollowstar.graphics.lineTo(150, 310);
+		hollowstar.graphics.lineTo(0, 190);
+		hollowstar.graphics.lineTo(190, 190);
+		hollowstar.graphics.lineTo(250, 0);
+		hollowstar.graphics.lineTo(250, 10);
+		hollowstar.graphics.lineTo(200, 200);
+		hollowstar.graphics.lineTo(20, 200);
+		hollowstar.graphics.lineTo(160, 310);
+		hollowstar.graphics.lineTo(110, 490);
+		hollowstar.graphics.lineTo(250, 380);
+		hollowstar.graphics.lineTo(390, 490);
+		hollowstar.graphics.lineTo(340, 310);
+		hollowstar.graphics.lineTo(480, 200);
+		hollowstar.graphics.lineTo(290, 200);
+		hollowstar.graphics.lineTo(250, 10);
+		hollowstar.graphics.lineTo(250,0);
+		hollowstar.graphics.closePath();
+		hollowstar.x = 100;
+		hollowstar.y = 100;
+		hollowstar.color = function(color) {
+			var newhollowstar = new createjs.Shape();
+			console.log(this.hollowstar);
+			newhollowstar.graphics.beginFill (color || "red");
+			newhollowstar.graphics.moveTo(250, 0);
+			newhollowstar.graphics.lineTo(300, 190);
+			newhollowstar.graphics.lineTo(500, 190);
+			newhollowstar.graphics.lineTo(350, 310);
+			newhollowstar.graphics.lineTo(400, 500);
+			newhollowstar.graphics.lineTo(250, 390);
+			newhollowstar.graphics.lineTo(100, 500);
+			newhollowstar.graphics.lineTo(150, 310);
+			newhollowstar.graphics.lineTo(0, 190);
+			newhollowstar.graphics.lineTo(190, 190);
+			newhollowstar.graphics.lineTo(250, 0);
+			newhollowstar.graphics.lineTo(250, 10);
+			newhollowstar.graphics.lineTo(200, 200);
+			newhollowstar.graphics.lineTo(20, 200);
+			newhollowstar.graphics.lineTo(160, 310);
+			newhollowstar.graphics.lineTo(110, 490);
+			newhollowstar.graphics.lineTo(250, 380);
+			newhollowstar.graphics.lineTo(390, 490);
+			newhollowstar.graphics.lineTo(340, 310);
+			newhollowstar.graphics.lineTo(480, 200);
+			newhollowstar.graphics.lineTo(290, 200);
+			newhollowstar.graphics.lineTo(250, 10);
+			newhollowstar.graphics.lineTo(250,0);
+			newhollowstar.graphics.closePath();
+			newhollowstar.x = 100;
+			newhollowstar.y = 100;
+			this.remove();
+			addFunctions(newhollowstar);
+			addToStage(newhollowstar);
+			return newhollowstar;
+		}
+		addToStage(hollowstar);
+		return hollowstar;
+	},
+	fivepointedstar: function(color) {
+		var fivepointedstar = new createjs.Shape();
+		addFunctions(fivepointedstar);
+		fivepointedstar.graphics.beginFill (color || "red");
+		fivepointedstar.graphics.moveTo(250, 0);
+		fivepointedstar.graphics.lineTo(300, 190);
+		fivepointedstar.graphics.lineTo(500, 190);
+		fivepointedstar.graphics.lineTo(350, 310);
+		fivepointedstar.graphics.lineTo(400, 500);
+		fivepointedstar.graphics.lineTo(250, 390);
+		fivepointedstar.graphics.lineTo(100, 500);
+		fivepointedstar.graphics.lineTo(150, 310);
+		fivepointedstar.graphics.lineTo(0, 190);
+		fivepointedstar.graphics.lineTo(190, 190);
+		fivepointedstar.graphics.lineTo(250, 0);
+		fivepointedstar.graphics.closePath();
+		fivepointedstar.x = 100;
+		fivepointedstar.y = 100;
+		fivepointedstar.color = function(color) {
+			var newfivepointedstar = new createjs.Shape();
+			console.log(this.fivepointedstar);
+			newfivepointedstar.graphics.beginFill (color || "red");
+			newfivepointedstar.graphics.moveTo(250, 0);
+			newfivepointedstar.graphics.lineTo(300, 190);
+			newfivepointedstar.graphics.lineTo(500, 190);
+			newfivepointedstar.graphics.lineTo(350, 310);
+			newfivepointedstar.graphics.lineTo(400, 500);
+			newfivepointedstar.graphics.lineTo(250, 390);
+			newfivepointedstar.graphics.lineTo(100, 500);
+			newfivepointedstar.graphics.lineTo(150, 310);
+			newfivepointedstar.graphics.lineTo(0, 190);
+			newfivepointedstar.graphics.lineTo(190, 190);
+			newfivepointedstar.graphics.lineTo(250, 0);
+			newfivepointedstar.graphics.closePath();
+			newfivepointedstar.x = 100;
+			newfivepointedstar.y = 100;
+			this.remove();
+			addFunctions(newfivepointedstar);
+			addToStage(newfivepointedstar);
+			return newfivepointedstar;
+		}
+		addToStage(fivepointedstar);
+		return fivepointedstar;
 	},
 	pentagon: function(color) {
 		var pentagon = new createjs.Shape();
@@ -161,6 +462,24 @@ rectangle: function(color, width, height) {
 		pentagon.graphics.closePath();
 		pentagon.x = 110;
 		pentagon.y = 110;
+		pentagon.color = function(color) {
+			var newpentagon = new createjs.Shape();
+			console.log(this.pentagon);
+			newpentagon.graphics.beginFill (color || "red");
+			newpentagon.graphics.moveTo(0, 150);
+			newpentagon.graphics.lineTo(150, 0);
+			newpentagon.graphics.lineTo(300, 150);
+			newpentagon.graphics.lineTo(225, 300);
+			newpentagon.graphics.lineTo(75, 300);
+			newpentagon.graphics.lineTo(0, 150);
+			newpentagon.graphics.closePath();
+			newpentagon.x = 110;
+			newpentagon.y = 110;
+			this.remove();
+			addFunctions(newpentagon);
+			addToStage(newpentagon);
+			return newpentagon;
+		}
 		addToStage(pentagon);
 		return pentagon;
 	},
@@ -177,6 +496,24 @@ rectangle: function(color, width, height) {
 		hexagon.graphics.closePath();
 		hexagon.x = 110;
 		hexagon.y = 110;
+		hexagon.color = function(color) {
+			var newhexagon = new createjs.Shape();
+			console.log(this.hexagon);
+			newhexagon.graphics.beginFill (color || "red");
+			newhexagon.graphics.moveTo(50, 50);
+			newhexagon.graphics.lineTo(150, 50);
+			newhexagon.graphics.lineTo(200, 136.6);
+			newhexagon.graphics.lineTo(150, 223.2);
+			newhexagon.graphics.lineTo(50, 223.2);
+			newhexagon.graphics.lineTo(0, 136.6);
+			newhexagon.graphics.closePath();
+			newhexagon.x = 110;
+			newhexagon.y = 110;
+			this.remove();
+			addFunctions(newhexagon);
+			addToStage(newhexagon);
+			return newhexagon;
+		}
 		addToStage(hexagon);
 		return hexagon;
 	},
@@ -190,13 +527,35 @@ rectangle: function(color, width, height) {
 		cross.graphics.lineTo(0, 155);
 		cross.graphics.lineTo(0, 150);
 		cross.graphics.moveTo(150, 0);
-		cross.graphics.moveTo(155, 0);
+		cross.graphics.lineTo(155, 0);
 		cross.graphics.lineTo(155, 525);
 		cross.graphics.lineTo(150, 525);
 		cross.graphics.lineTo(150, 0);
 		cross.graphics.closePath();
 		cross.x = 25;
 		cross.y = 25;
+		cross.color = function(color) {
+			var newcross = new createjs.Shape();
+			console.log(this.cross);
+			newcross.graphics.beginFill (color || "red");
+			newcross.graphics.moveTo(0, 150);
+			newcross.graphics.lineTo(300, 150);
+			newcross.graphics.lineTo(300, 155);
+			newcross.graphics.lineTo(0, 155);
+			newcross.graphics.lineTo(0, 150);
+			newcross.graphics.moveTo(150, 0);
+			newcross.graphics.lineTo(155, 0);
+			newcross.graphics.lineTo(155, 525);
+			newcross.graphics.lineTo(150, 525);
+			newcross.graphics.lineTo(150, 0);
+			newcross.graphics.closePath();
+			newcross.x = 25;
+			newcross.y = 25;
+			this.remove();
+			addFunctions(newcross);
+			addToStage(newcross);
+			return newcross;
+		}
 		addToStage(cross);
 		return cross;
 	},
@@ -214,8 +573,29 @@ rectangle: function(color, width, height) {
 		octagon.graphics.lineTo(0, 100);
 		octagon.graphics.lineTo(100, 0);
 		octagon.graphics.closePath();
-		octagon.x = 100
-		octagon.y = 100
+		octagon.x = 100;
+		octagon.y = 100;
+		octagon.color = function(color) {
+			var newoctagon = new createjs.Shape();
+			console.log(this.octagon);
+			newoctagon.graphics.beginFill (color || "red");
+			newoctagon.graphics.moveTo(100, 0);
+			newoctagon.graphics.lineTo(241, 0);
+			newoctagon.graphics.lineTo(341, 100);
+			newoctagon.graphics.lineTo(341, 241);
+			newoctagon.graphics.lineTo(241, 341);
+			newoctagon.graphics.lineTo(100, 341);
+			newoctagon.graphics.lineTo(0, 241);
+			newoctagon.graphics.lineTo(0, 100);
+			newoctagon.graphics.lineTo(100, 0);
+			newoctagon.graphics.closePath();
+			newoctagon.x = 100;
+			newoctagon.y = 100;
+			this.remove();
+			addFunctions(newoctagon);
+			addToStage(newoctagon);
+			return newoctagon;
+		}
 		addToStage(octagon);
 		return octagon;
 	},
@@ -230,6 +610,27 @@ rectangle: function(color, width, height) {
 		salmiakki.graphics.closePath();
 		salmiakki.x = 200;
 		salmiakki.y = 200;
+		salmiakki.color = function(color) {
+			var newoctagon = new createjs.Shape();
+			console.log(this.salmiakki);
+			newsalmiakki.graphics.beginFill (color || "red");
+			newsalmiakki.graphics.moveTo(100, 0);
+			newsalmiakki.graphics.lineTo(241, 0);
+			newsalmiakki.graphics.lineTo(341, 100);
+			newsalmiakki.graphics.lineTo(341, 241);
+			newsalmiakki.graphics.lineTo(241, 341);
+			newsalmiakki.graphics.lineTo(100, 341);
+			newsalmiakki.graphics.lineTo(0, 241);
+			newsalmiakki.graphics.lineTo(0, 100);
+			newsalmiakki.graphics.lineTo(100, 0);
+			newsalmiakki.graphics.closePath();
+			newsalmiakki.x = 100;
+			newsalmiakki.y = 100;
+			this.remove();
+			addFunctions(newsalmiakki);
+			addToStage(newsalmiakki);
+			return newsalmiakki;
+		}
 		addToStage(salmiakki);
 		return salmiakki;
 	},
@@ -244,6 +645,22 @@ rectangle: function(color, width, height) {
 		palikka.graphics.closePath();
 		palikka.x = 200;
 		palikka.y = 200;
+		palikka.color = function(color) {
+			var newpalikka = new createjs.Shape();
+			console.log(this.palikka);
+			newpalikka.graphics.beginFill (color || "red");
+			newpalikka.graphics.moveTo(20, 20);
+			newpalikka.graphics.arcTo(140, 20, 140, 40, 50);
+			newpalikka.graphics.lineTo(140, 240);
+			newpalikka.graphics.arcTo(20, 240, 20, 220, 50);
+			newpalikka.graphics.closePath();
+			newpalikka.x = 200;
+			newpalikka.y = 200;
+			this.remove();
+			addFunctions(newpalikka);
+			addToStage(newpalikka);
+			return newpalikka;
+		}
 		addToStage(palikka);
 		return palikka;
 	},
@@ -271,6 +688,35 @@ rectangle: function(color, width, height) {
 		illuminati.graphics.closePath();
 		illuminati.x = 0
 		illuminati.y = 0
+		illuminati.color = function(color) {
+			var newilluminati = new createjs.Shape();
+			console.log(this.illuminati);
+			newilluminati.graphics.beginFill(color || "this").drawCircle(200, 200, 50 );
+			newilluminati.graphics.beginFill("white").drawCircle(200, 200, 10 );
+			newilluminati.graphics.beginFill(color || "this");
+			newilluminati.graphics.moveTo(200, 90);
+			newilluminati.graphics.lineTo(283, 250);
+			newilluminati.graphics.lineTo(273, 250);
+			newilluminati.graphics.lineTo(200, 100);
+			newilluminati.graphics.lineTo(200, 90);
+			newilluminati.graphics.moveTo(200, 90);
+			newilluminati.graphics.lineTo(200, 100);
+			newilluminati.graphics.lineTo(127, 250);
+			newilluminati.graphics.lineTo(117, 250);
+			newilluminati.graphics.lineTo(200, 90);
+			newilluminati.graphics.moveTo(283, 250);
+			newilluminati.graphics.lineTo(288, 260);
+			newilluminati.graphics.lineTo(112, 260);
+			newilluminati.graphics.lineTo(117, 250);
+			newilluminati.graphics.lineTo(283, 250);
+			newilluminati.graphics.closePath();
+			newilluminati.x = 0
+			newilluminati.y = 0
+			this.remove();
+			addFunctions(newilluminati);
+			addToStage(newilluminati);
+			return newilluminati;
+		}
 		addToStage(illuminati);
 		return illuminati;
 	},
@@ -339,6 +785,22 @@ var move = function(content) {
 			this.x += coordinates[0] || deltaTime/1000*this.speed;
 			this.y += coordinates[1] || deltaTime/1000*this.speed;
 }
+}
+function rotate(angle) {
+	angle = angle*Matrix2D.DEG_TO_RAD;
+
+
+}
+var direction;
+
+
+switch (direction) {
+	case ("clockwise"):
+		this.rotate += deltaTime/1000*this.speed || 50;
+		break;
+	case ("counterclockwise"):
+		this.rotate -= deltaTime/1000*this.speed || 50;
+		break;
 }
  function addToStage(object) {
 	 if(currentObjects == maxobjects) {
